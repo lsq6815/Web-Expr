@@ -1,0 +1,156 @@
+body {
+    background-image: url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    line-height: 1;
+}
+
+div.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+ 
+div.logo {
+    position: absolute;
+    top: 50px;
+    left: 10%;
+}
+
+div.logo span {
+    display: inline-block;
+    position: absolute;
+    height: 38px;
+    line-height: 38px;
+    top: 15px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid #fff;
+    color: #fff;
+    font-size: 24px;
+    width: 150px;
+}
+
+div.login_wrap {
+    width: 600px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+div.wrap {
+    width: 416px;
+    max-height: 531px;
+    min-height: 456px;
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 4px;
+    margin: 20% auto 0;
+}
+
+div.main {
+    width: calc(100% - 76px);
+    min-height: 300px;
+    padding: 22px 38px;
+}
+
+div.methods_tab {
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+    font-size: 12px;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+div.methods_tab span {
+    display: block;
+    width: 50%;
+    float: left;
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 20px;
+    padding: 8px 0;
+}
+
+div.methods_tab span.active {
+    border-bottom: 1px solid #2B6CDB;
+}
+
+div.container div.form {
+    margin-top: 10px;
+}
+
+div.container div.button {
+    margin-top: 60px;
+}
+
+div.container div.button a.login_button {
+    width: 100%;
+    height: 50px;
+    background: #2368DE;
+    border-radius: 4px;
+    display: block;
+    color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: 12px;
+    text-align: center;
+}
+
+div.form div.account div.item {
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    height: 48px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+div.form span.icon {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+}
+
+div.form div.account > div > input {
+    width: 70%;
+    border: none;
+    height: 48px;
+    margin-left: 48px;
+}
+
+div.form a.input_eye {
+    position: absolute;
+    top: 19px;
+    cursor: pointer;
+    width: 18px;
+    height: 15px;
+}
+
+/* TODO: add icon for eye open and close */
+div.form a.input_eye.eye_close {
+    background: url("../images/eye_close.png") no-repeat;
+}
+
+div.form a.input_eye.eye_open {
+    background: url("../images/eye_close.png") no-repeat;
+}
+
+p.copyright {
+    width: 416px;
+    margin: 20px auto 0;
+    font-size: 12px;
+    color: #FFFFFF;
+    line-height: 24px;
+}
