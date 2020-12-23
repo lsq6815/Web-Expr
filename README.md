@@ -10,11 +10,11 @@
 
 1.  实现前端页面的基本布局。要求:
 
-    - [ ] 布局类似于[学校门户](http://my.csu.edu.cn/login/index.jsp)
+    - [x] 布局类似于[学校门户](http://my.csu.edu.cn/login/index.jsp)
 
-    - [ ] 顶部需有 `LOGO` 栏目;
+    - [x] 顶部需有 `LOGO` 栏目;
 
-    - [ ] 左侧提供轮播图;
+    - [x] 左侧提供轮播图;
 
     - [ ] 提供账号密码登录方式;
 
