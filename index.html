@@ -25,11 +25,11 @@
             <div class="wrap">
                 <div class="main">
                     <!-- login methods switch table -->
-                    <div class="methods_tab">
+                   <div class="methods_tab">
                         <span class="pwd_login active">账号登录</span>
                         <span class="phone_login">手机登录</span>
                     </div>
-                    <form id="pwd_login" action="">
+                    <form id="pwd_login" action="pwd_login.php" method="post">
                         <div class="form">
                             <div class="account">
                                 <div id="username" class="item">
@@ -42,6 +42,7 @@
                                     <a id="eye" class="input_eye eye_close" href="#"></a>
                                 </div>
                             </div>
+                            <div class="form_error"><span id="show_error">您提供的用户名或者密码有误</span></div>
                             <div class="button">
                                 <a class="login_button" href="#">登录</a>
                             </div>
@@ -54,7 +55,7 @@
             <!-- copyright disclare -->
             <p class="copyright">版权所有 © 2020 中南大学信息与网络中心. 保留所有权利技术支持：0731-88830426  邮箱地址：app@csu.edu.cn</p>
         </div>
-
+        <!-- dots to control slides -->
         <div class="dots">
             <span class="dot active"></span>
             <span class="dot"></span>
@@ -62,7 +63,9 @@
         </div>
         <!-- <div class="lang_switch"></div> -->
     </div>    
+    <!-- javascript files -->
     <script src="./scripts/eye.js"></script>
     <script src="./scripts/slides.js"></script>
+    <script src="./scripts/login.js"></script>
 </body>
 </html>
