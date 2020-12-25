@@ -1,8 +1,4 @@
 body {
-    /* background-image: url('../images/bg0.png'); */
-    /* background-repeat: no-repeat; */
-    /* background-size: 100% 100%; */
-    /* background-attachment: fixed; */
     height: 100%;
     width: 100%;
     line-height: 1;
@@ -100,6 +96,15 @@ div.methods_tab span {
 
 div.methods_tab span.active {
     border-bottom: 1px solid #2B6CDB;
+}
+
+div.methods_tab span a {
+    color: #34363E;
+    text-decoration: none;
+}
+
+div.methods_tab span.active a {
+    color: #2B6CDB;
 }
 
 div.container div.form {
