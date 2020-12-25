@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login with Phone Number</title>
     <!-- stylesheets include -->
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/style.css">
@@ -30,17 +30,17 @@
                         <span class="pwd_login"><a href="./index.html">账号登录</a></span>
                         <span class="phone_login active"><a href="./index_phone.html">手机登录</a></span>
                     </div>
-                    <form id="pwd_login" action="">
+                    <form id="phone_login" action="">
                         <div class="form">
                             <div class="account">
-                                <div id="username" class="item">
+                                <div id="phone" class="item">
                                     <span class="icon"><img src="./images/user1.png" alt=""></span>
-                                    <input type="text" name="username" placeholder="请输入学号/工号" value="">
+                                    <input type="text" name="phone" placeholder="请输入手机号" value="">
                                 </div>
-                                <div id="password" class="item">
+                                <div id="code" class="item">
                                     <span class="icon"><img src="./images/pass1.png" alt=""></span>
-                                    <input type="password" name="password" placeholder="密码" value="">
-                                    <a id="eye" class="input_eye eye_close" href="#"></a>
+                                    <input type="text" name="code" placeholder="请输入短信动态码" value="">
+                                    <a id="get_code" href="#"><em>获取动态码</em></a>
                                 </div>
                             </div>
                             <div class="form_error"><span id="show_error">您提供的用户名或者密码有误</span></div>
@@ -64,8 +64,8 @@
         <!-- <div class="lang_switch"></div> -->
     </div>    
     <!-- javascript files -->
-    <script src="./scripts/eye.js"></script>
+    <script src="./scripts/get_code.js"></script>
     <script src="./scripts/slides.js"></script>
-    <script src="./scripts/login.js"></script>
+    <!-- <script src="./scripts/login.js"></script> -->
 </body>
 </html>

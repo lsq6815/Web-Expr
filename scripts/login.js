@@ -18,7 +18,7 @@ document.querySelector("form#pwd_login a.login_button").onclick = function() {
                 document.getElementById('show_error').style.opacity = 1;
             } else {
                 document.getElementById('show_error').style.opacity = 0;
-                document.location.assign(document.location.origin + document.location.pathname + 'demo.php');
+                document.location.assign(document.location.origin + '/Web-Expr/demo.php');
             }
         }
     };
