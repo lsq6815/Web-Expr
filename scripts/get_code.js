@@ -1,6 +1,6 @@
 document.querySelector("div.form div#code a#get_code ").onclick = function() {
     // check if phone number is given correct
-   var sms_request = {
+    var sms_request = {
         phone: document.querySelector("div.form div#phone input[name='phone']").value
     }
     var pattern = /^\d{11}$/
@@ -10,11 +10,14 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
         // send request to server via JSON
         document.getElementById('show_error').style.opacity = 0;
         var xmlhttp = new XMLHttpRequest();
+        
+        // callback
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 // parse response as JSON
                 var json = JSON.parse(this.responseText);
                 // console.log(json);
+                // if server has this phone
                 if (json.status) {
                     document.getElementById('show_error').innerText = "短信已发向：" + sms_request.phone;
                     document.getElementById('show_error').style.opacity = 1;
@@ -23,7 +26,12 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
                         document.getElementById('show_error').style.opacity = 1;
 
                     },
-                    10000); // set sms code timeout here, unit is ms;
+                    2000); // set sms code timeout here, unit is ms;
+                }
+                // if server hasn't this phone
+                else {
+                    document.getElementById('show_error').innerText = json.error;
+                    document.getElementById('show_error').style.opacity = 1;
                 }
             }
         };
@@ -33,6 +41,7 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
         xmlhttp.setRequestHeader("Content-type", "application/json");
         xmlhttp.send(JSON.stringify(sms_request));
     }
+    // if phone format is incorrect
     else {
         document.getElementById('show_error').innerText = "手机号格式不正确";
         document.getElementById('show_error').style.opacity = 1;
