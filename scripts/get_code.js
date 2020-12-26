@@ -30,7 +30,7 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
                     // when click login in with token(SMS code)
                     document.querySelector("form#phone_login a.login_button").onclick = function() {
                         var code = document.querySelector("div.form div#code input[name='code']").value;
-                        window.location.assign(document.location.origin + '/Web-Expr/demo.php?' + "username=" + json.username + "&token=" + code);
+                        window.location.assign(document.location.origin + '/Web-Expr/login.php?' + "username=" + json.username + "&token=" + code);
                     };
                 }
                 // if server hasn't this phone
