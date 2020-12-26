@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>New User</h1>
+    <form method="GET" action="new_user.php">
+        <table>
+        <tr>
+            <td>Enter your username</td>
+            <td><input type="text" size="10" name="username" value=""></td>
+        </tr>
+        <tr>
+            <td>Enter your password:</td>
+            <td><input type="password" size="10" name="newpassword"></td>
+        </tr>
+        <tr>
+            <td>Enter your phone number</td>
+            <td><input type="text" size="10" name="phone" value=""></td>
+        </tr>
+        <tr>
+            <td>SMS code</td>
+            <td><input type="text" size="10" name="code" value=""></td>
+        </tr>
+    </table>
+    <p><a id="apply" href="#">New Account Apply</a></p>
+    <p><a id="sms" href="#">Send SMS Code</a></p>
+    <script src="./scripts/send_code.js"></script>
+    </form>
+    </body>
+</html>
