@@ -26,7 +26,26 @@ if ($stmt) {
 
     /* if find result */
     if ($username) {
+        session_start();
         $response->status = true;
+        $response->username = $username;
+        $token = rand() % 10000; // limit to 4 digits
+        $_SESSION[$username] = $token;
+        
+        $input = file_get_contents("https://tianqiapi.com/api/sms?appid=84265617&appsecret=V9jv3QJ8&code=" . $token  . "&mobile=" . $phone);
+        // TODO: more details info about failures?
+        if ($input !== NULL) {
+            $json = json_decode($input);
+            if ($json->errcode === 0) {
+                $response->status->true;
+            }
+            else {
+                $response->status = false;
+            }
+        }
+        else {
+            $response->status = false;
+        }
     }
     /* if not find such user */
     else {

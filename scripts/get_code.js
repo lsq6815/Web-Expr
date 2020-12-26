@@ -1,8 +1,8 @@
 document.querySelector("div.form div#code a#get_code ").onclick = function() {
     // check if phone number is given correct
     var sms_request = {
-        phone: document.querySelector("div.form div#phone input[name='phone']").value
-    }
+        phone: document.querySelector("div.form div#phone input[name='phone']").value,
+    };
     var pattern = /^\d{11}$/
 
     // if phone number is of correct format
@@ -16,7 +16,7 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
             if (this.readyState == 4 && this.status == 200) {
                 // parse response as JSON
                 var json = JSON.parse(this.responseText);
-                // console.log(json);
+                console.log(json);
                 // if server has this phone
                 if (json.status) {
                     document.getElementById('show_error').innerText = "短信已发向：" + sms_request.phone;
@@ -24,9 +24,14 @@ document.querySelector("div.form div#code a#get_code ").onclick = function() {
                     setTimeout(function(){
                         document.getElementById('show_error').innerText = "验证码已过时";
                         document.getElementById('show_error').style.opacity = 1;
-
                     },
-                    2000); // set sms code timeout here, unit is ms;
+                    10000); // set sms code timeout here, unit is ms;
+
+                    // when click login in with token(SMS code)
+                    document.querySelector("form#phone_login a.login_button").onclick = function() {
+                        var code = document.querySelector("div.form div#code input[name='code']").value;
+                        window.location.assign(document.location.origin + '/Web-Expr/demo.php?' + "username=" + json.username + "&token=" + code);
+                    };
                 }
                 // if server hasn't this phone
                 else {

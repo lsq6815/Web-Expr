@@ -18,7 +18,8 @@ document.querySelector("form#pwd_login a.login_button").onclick = function() {
                 document.getElementById('show_error').style.opacity = 1;
             } else {
                 document.getElementById('show_error').style.opacity = 0;
-                document.location.assign(document.location.origin + '/Web-Expr/demo.php?' + "username=" + login.username + "&token=" + json.token);
+                // jamp to login page with given token
+                document.location.assign(document.location.origin + '/Web-Expr/login.php?' + "username=" + login.username + "&token=" + json.token);
                 // console.log(document.location.origin + '/Web-Expr/demo.php?' + "username=" + login.username + "&token=" + json.token);
             }
         }
