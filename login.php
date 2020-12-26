@@ -50,6 +50,25 @@ EOF;
 </form>
 EOF;
 
+        echo <<<EOF
+<h1>Change Me</h1>
+<form method="GET" action="change_account.php">
+    <table>
+        <tr>
+            <td><input type="hidden" size="10" name="username" value="{$_GET['username']}"></td>
+        </tr>
+        <tr>
+            <td><input type="hidden" size="10" name="token" value="{$_GET['token']}"></td>
+        </tr>
+        <tr>
+            <td>Enter new phone number:</td>
+            <td><input type="text" size="10" name="phone" value=""></td>
+        </tr>
+    </table>
+    <p><input type="submit" value="Change Account"></p>
+</form>
+EOF;
+
         echo "<p><a href='index.html'>HOME</a>";
     }
     else {
