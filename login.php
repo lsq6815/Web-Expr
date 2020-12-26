@@ -45,6 +45,8 @@ EOF;
         <tr>
             <td><input type="hidden" size="10" name="token" value="{$_GET['token']}"></td>
         </tr>
+        <tr>
+        </tr>
     </table>
     <p><input type="submit" value="Account Delete"></p>
 </form>
