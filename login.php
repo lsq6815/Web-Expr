@@ -33,8 +33,24 @@ if (isset($_GET['username'])) {
     </table>
     <p><input type="submit" value="Update Password"></p>
 </form>
-<p><a href="index.html">HOME</a>
 EOF;
+
+        echo <<<EOF
+<h1>Delete Me</h1>
+<form method="GET" action="account_delete.php">
+    <table>
+        <tr>
+            <td><input type="hidden" size="10" name="username" value="{$_GET['username']}"></td>
+        </tr>
+        <tr>
+            <td><input type="hidden" size="10" name="token" value="{$_GET['token']}"></td>
+        </tr>
+    </table>
+    <p><input type="submit" value="Account Delete"></p>
+</form>
+EOF;
+
+        echo "<p><a href='index.html'>HOME</a>";
     }
     else {
         echo "Wrong token<br/>";
