@@ -27,7 +27,11 @@ if ($stmt) {
     if ($password) {
         /* if password correct */ 
         if ($password == md5($json->password)) {
+            session_start();
             $response->status = true;
+            $response->token  = rand();
+            // keep login status
+            $_SESSION[$username] = $response->token;
         } 
         /* if password incorrect */
         else {

@@ -11,14 +11,15 @@ document.querySelector("form#pwd_login a.login_button").onclick = function() {
         if (this.readyState == 4 && this.status == 200) {
             // parse response as JSON
             var json = JSON.parse(this.responseText);
-            // console.log(json);
+            console.log(json);
             if (!json.status) {
                 // if password is incorrect, show error tip
                 document.getElementById('show_error').innerText = json.error;
                 document.getElementById('show_error').style.opacity = 1;
             } else {
                 document.getElementById('show_error').style.opacity = 0;
-                document.location.assign(document.location.origin + '/Web-Expr/demo.php');
+                document.location.assign(document.location.origin + '/Web-Expr/demo.php?' + "username=" + login.username + "&token=" + json.token);
+                // console.log(document.location.origin + '/Web-Expr/demo.php?' + "username=" + login.username + "&token=" + json.token);
             }
         }
     };
