@@ -1,0 +1,31 @@
+     17 ./styles/base.css
+    228 ./styles/style.css
+245
+     13 ./lookup.html
+     33 ./new_user.html
+     73 ./index_phone.html
+     75 ./index.html
+194
+     12 ./scripts/eye.js
+     25 ./scripts/lookup.js
+     29 ./scripts/slides.js
+     32 ./scripts/login.js
+     45 ./scripts/send_code.js
+     54 ./scripts/get_code.js
+197
+     40 ./arch.md
+     51 ./README.md
+91
+     38 ./new_user.php
+     39 ./lookup.php
+     40 ./account_delete.php
+     41 ./change_account.php
+     41 ./password_change.php
+     52 ./validate.php
+     61 ./validate_phone.php
+     83 ./login.php
+395
+      2 ./sync.sh
+2
+
+Total 1124 lines
