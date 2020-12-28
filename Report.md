@@ -124,7 +124,7 @@ Web-Expr
 
 #### 前端架构
 
-![前端架构](./images/front.svg)
+![前端架构](./images/front.png)
 
 * `index.html`：用于帐号密码的登录
 
@@ -134,26 +134,26 @@ Web-Expr
 
 * 帐号密码登录（成功）
 
-    ![](./images/user_succ.svg)
+    ![](./images/user_succ.png)
 
 
 * 帐号密码登录（失败）
 
-    ![](./images/user_fail.svg)
+    ![](./images/user_fail.png)
 
 * 手机号登录（成功）
 
-    ![](./images/phone_succ.svg)
+    ![](./images/phone_succ.png)
 
 * 手机号登录（失败）
     
-    ![](./images/phone_fail.svg)
+    ![](./images/phone_fail.png)
 
 #### 帐号管理架构
 
-![](./images/login.svg)
+![](./images/login.png)
 
-![](./images/add_user.svg)
+![](./images/add_user.png)
 
 其中`account_delete.php, change_account.php password_change.php` 不通过登录验证，而是通过使用内嵌`<form>`在的`token`（`<input type="hidden" name="token" value="...">`）进行身份验证。
 
