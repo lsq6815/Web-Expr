@@ -1,0 +1,26 @@
+digraph G {
+    /* rankdir=LR; */
+    node[shape=box];
+    index_phone[label="index_phone.html"];
+    val_phone[label="validate_phone.php"];
+    get_code[label="get_code.js"];
+    login[label="login.php"];
+    api[label="Third SMS API"];
+    user[label="User", shape=parallelogram];
+    database[label="Mysql", shape=oval];
+    phone[label="Phone", shape=parallelogram];
+
+    user -> index_phone[label="1: Input phone number"];
+    index_phone -> get_code[label="2: Click send SMS"];
+    get_code -> val_phone[label="3: Request to validate phone"];
+    val_phone -> database[label="4: Query phone number"];
+    database->val_phone[label="5: Find phone number"];
+    val_phone -> api[label="6: Request to send SMS \ncontaining generated token"];
+    api -> phone [label="7: Send SMS code"];
+    phone -> user [label="8: Get SMS code"];
+    user -> index_phone [label="9: Input SMS code"];
+    index_phone -> get_code [label="10: Click login button"];
+    get_code -> login [label="11: Login with given token"];
+
+    label="Phone/SMS login diagram(SUCCESS)";
+}

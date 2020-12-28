@@ -1,0 +1,17 @@
+digraph {
+    rankdir=LR;
+    label="前端的架构";
+
+    node[shape=box];
+
+    index[label="index.html"];
+    index_phone[label="index_phone.html"];
+    eye[label="eye.js"];
+    get_code[label="get_code.js"];
+    slides[label="slides.js"];
+
+    eye -> index[label="提供展示/屏蔽密码明文的功能"];
+    slides -> index,index_phone[label="提供轮播图效果"];
+    get_code -> index_phone[label="提供对手机号码格式的验证"];
+
+}

@@ -1,0 +1,24 @@
+digraph G {
+    /* rankdir=LR; */
+    node[shape=box];
+    index[label="index.html"];
+    /* index_phone[label="index_phone.html"]; */
+    val[label="validate.php"];
+    /* val_phone[label="validate_phone.php"]; */
+    get_pass[label="login.js"];
+    /* get_code[label="get_code.js"]; */
+    /* api[label="Third SMS API"]; */
+    user[label="User", shape=parallelogram];
+    database[label="Mysql", shape=oval];
+    /* phone[label="手机", shape=parallelogram]; */
+
+    user -> index[label="1: Input user/passwd"];
+    index -> get_pass[label="2: Click login button"];
+    get_pass -> val[label="3: Request to validate user/passwd"];
+    val -> database[label="4: Query user/passwd"];
+    database->val[label="5: No such user/passwd"];
+    val -> get_pass[label="6: Generate error info and return"];
+    get_pass -> index[label="7: Show error info"];
+
+    label="Username/Password login diagram(FAILED)";
+}
