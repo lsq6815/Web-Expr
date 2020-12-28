@@ -1,0 +1,18 @@
+digraph G {
+    /* rankdir=TB; */
+    rankdir=LR;
+    compound=true;
+    node[shape=box];
+    label="action available in login page";
+
+    login[label="login.php"];
+    delete[label="account_delete.php"];
+    change[label="change_account.php"];
+    change_pass[label="password_change.php"];
+    add_user[label="add_user"];
+
+    delete->login[label="Support delete action"];
+    change->login[label="Support change action"];
+    change_pass->login[label="Support password change"];
+    add_user->login[label="Support additon action"];
+}

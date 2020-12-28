@@ -1,0 +1,39 @@
+digraph G {
+    /* rankdir=LR; */
+    compound=true;
+    rankdir=BT;
+    node[shape=box];
+
+    subgraph cluster0 {
+        label="add user";
+        rankdir=RL;
+        add_front[label="new_user.html"];
+        add_back[label="new_user.php"];
+        send_code[label="send_code.js"]
+        user[label="User", shape=parallelogram]
+        phone[label="Phone", shape=parallelogram];
+        api[label="Third SMS API"];
+        database[label="Mysql", shape=oval];
+    }
+
+    /* login[label="login.php"]; */
+    /* delete[label="account_delete.php"]; */
+    /* change[label="change_account.php"]; */
+    /* change_pass[label="password_change.php"]; */
+
+    /* delete->login[label="Support delete action"]; */
+    /* change->login[label="Support change action"]; */
+    /* change_pass->login[label="Support password change"]; */
+
+    /* add new user */
+    user->add_front[label="1: Input phone \nnumber"];
+    add_front->send_code[label="2: Click \n\"send SMS\""];
+    send_code->api[label="3: Request to \nsend SMS"];
+    api->phone[label="4: Send SMS to phone"];
+    phone->user[label="5: Get SMS code"];
+    user->add_front[label="6: Click \n\"Apply for account\""];
+    add_front->add_back[label="7: Request to \napply new account"];
+    add_back->database[label="8: Insert new account"];
+
+    /* phone->login[ltail=cluster0, label="Support add action"]; */
+}
