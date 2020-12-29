@@ -24,8 +24,10 @@ if ($_SESSION[$username] == $token) {
         if ($stmt->affected_rows > 0) {
             echo <<<EOF
 <h1>SUCCESS CHANGE PASSWORD</h1>
-<a href="index.html">HOME</a>
 EOF;
+
+            header("Location: ./login.php?username=" . $username . "&token=" . $token);
+            exit();
         }
         else {
             echo "ERROR OCCUR";
