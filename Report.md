@@ -12,7 +12,7 @@
 
 本次实验任务为实现一个登录页面。具体要求如下:
 
-1.  实现前端页面的基本布局。要求:
+1. 实现前端页面的基本布局。要求:
 
     - 布局类似于[学校门户](http://my.csu.edu.cn/login/index.jsp)
 
@@ -30,9 +30,9 @@
 
     - 提供用户的增删改查。
 
-2.  完成前后端数据交互(用 `JSON` 格式)
+2. 完成前后端数据交互(用 `JSON` 格式)
 
-3.  数据操作要求:
+3. 数据操作要求:
 
     - 数据统一存储在后端数据库中;
 
@@ -56,11 +56,11 @@
 
 ### 技术栈
 
-* 前端：`HTML` + `CSS` + `JavaScript`
+- 前端：`HTML` + `CSS` + `JavaScript`
 
-* 后端：`PHP`
+- 后端：`PHP`
 
-* 数据库：`SQL`
+- 数据库：`SQL`
 
 ### 实验环境
 
@@ -68,15 +68,15 @@
 
 `Lamp` = `Linux` + `Apache2` + `mariadb` + `php`
 
-* `Linux`: `Linux kali 5.9.0-kali5-amd64 x86_64 GNU/Linux`
+- `Linux`: `Linux kali 5.9.0-kali5-amd64 x86_64 GNU/Linux`
 
-* `Apache2`: `Server version: Apache/2.4.46 (Debian)`
+- `Apache2`: `Server version: Apache/2.4.46 (Debian)`
 
-* `mariadb`: `mariadb Ver 15.1 Distrib 10.5.8-MariaDB, for debian-linux-gnu (x86_64)`
+- `mariadb`: `mariadb Ver 15.1 Distrib 10.5.8-MariaDB, for debian-linux-gnu (x86_64)`
 
-* `PHP`: `PHP 7.4.11 (cli) (built: Oct  6 2020 10:34:39) ( NTS )`
+- `PHP`: `PHP 7.4.11 (cli) (built: Oct  6 2020 10:34:39) ( NTS )`
 
-#### 第三方短信验证码`API` 
+#### 第三方短信验证码`API`
 
 [短信验证码接口](https://www.tianqiapi.com/index/doc?version=sms)
 
@@ -84,7 +84,11 @@
 
 **URL:** `https://yiketianqi.com/api`
 
-**请求示例:** `https://yiketianqi.com/api/sms?appid=&appsecret=&code=&moblie=`
+**请求示例:**
+
+```js
+https://yiketianqi.com/api/sms?appid=&appsecret=&code=&moblie=
+```
 
 **请求参数说明:**
 
@@ -97,7 +101,7 @@
 
 **响应**`JSON`
 
-```json
+```js
 {"errcode": 0, "errmsg": "SUCCESS"}
 ```
 
@@ -149,11 +153,11 @@ Web-Expr
 
 ![前端架构](./images/front.png)
 
-* `index.html`：用于帐号密码的登录
+- `index.html`：用于帐号密码的登录
 
     ![index.html](./screenshot/index.png)
 
-* `index_phone.html`：用于手机号的登录
+- `index_phone.html`：用于手机号的登录
 
     ![index_phone.html](./screenshot/index_phone.png)
 
@@ -163,37 +167,47 @@ Web-Expr
 
 因为后端只验证不登录，所以可以通过`Ajax`返回不同的错误信息，比如用户名不存在和密码错误。手机登录则能提示已经发送短信。
 
-* 帐号密码登录（成功）
+##### 登陆的流程图
 
-    ![](./images/user_succ.png)
+- 帐号密码登录（成功）
 
-* 帐号密码登录（失败）
+    ![帐号密码登录（成功）](./images/user_succ.png)
 
-    ![](./images/user_fail.png)
+- 帐号密码登录（失败）
 
-* 手机号登录（成功）
+    ![帐号密码登录（失败）](./images/user_fail.png)
 
-    ![](./images/phone_succ.png)
+- 手机号登录（成功）
 
-* 手机号登录（失败）
+    ![手机号登录（成功）](./images/phone_succ.png)
 
-    ![](./images/phone_fail.png)
+- 手机号登录（失败）
+
+    ![手机号登录（失败）](./images/phone_fail.png)
 
 #### 帐号管理架构
 
-![](./images/login.png)
+![帐号管理架构](./images/login.png)
 
-其中`account_delete.php change_account.php password_change.php` 不通过登录验证，而是通过使用内嵌`<form>`在的`token`（`<input type="hidden" name="token" value="...">`）和`username`（`<input type="hidden" name="username" value="...">`）在提交表格的时候自动提交来让后端进行身份验证。
+其中`account_delete.php`，`change_account.php` 和 `password_change.php` 不通过登录验证，而是通过使用内嵌`<form>`在的`token`和`username`在提交表格的时候自动提交来让后端进行身份验证。（如下图所示）
 
-![](./images/lookup.png)
+```html
+<input type="hidden" name="token" value="...">
+<input type="hidden" name="username" value="...">
+```
 
-登录界面会动态的在帐号信息查询展示用户自身的信息。
+##### 用户信息查询架构
 
-![](./images/screenshot/lookup.png)
+![信息查询](./images/lookup.png)
+
+除了动态的对用户的输入进行查询以外，登录界面会动态的在帐号信息查询展示用户自身的信息。
+
+![](./screenshot/lookup.png)
 
 #### 申请新帐号的架构
 
-![](./images/add_user.png)
+![申请新帐号的架构](./images/add_user.png)
 
+这里采用了和手机号登陆不同的处理方式，在手机号登陆中，后端调用了短信`API`，而在通过手机号申请新用户的过程中，前端调用的短信`API`。
 
 ## 实验收获
