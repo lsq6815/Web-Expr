@@ -4,17 +4,14 @@ digraph G {
     rankdir=BT;
     node[shape=box];
 
-    subgraph cluster0 {
-        label="add user";
-        rankdir=RL;
-        add_front[label="new_user.html"];
-        add_back[label="new_user.php"];
-        send_code[label="send_code.js"]
-        user[label="User", shape=parallelogram]
-        phone[label="Phone", shape=parallelogram];
-        api[label="Third SMS API"];
-        database[label="Mysql", shape=oval];
-    }
+    label="add user";
+    add_front[label="new_user.html"];
+    add_back[label="new_user.php"];
+    send_code[label="send_code.js"]
+    user[label="User", shape=parallelogram]
+    phone[label="Phone", shape=parallelogram];
+    api[label="Third SMS API"];
+    database[label="Mysql", shape=oval];
 
     /* login[label="login.php"]; */
     /* delete[label="account_delete.php"]; */

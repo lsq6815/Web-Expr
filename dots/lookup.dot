@@ -1,0 +1,19 @@
+digraph G {
+    subgraph cluster0 {
+        rankdir=LR;
+        label="lookup";
+
+        index[label="login.php"];
+        front[label="lookup.js"];
+        end[label="lookup.php"];
+        database[label="MySQL", shape=oval];
+
+        index->front[label="1: 输入框内容改变    "];
+        front->end[label="2: 发送Ajax请求    "];
+        end->database[label="3: 查询帐号信息    "];
+        database->end[label="4: 返回查询结果    "];
+        end->front[label="5: 接受信息    "];
+        front->index[label="6: 更新内容    "];
+    }
+
+}

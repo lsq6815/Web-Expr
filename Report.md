@@ -14,45 +14,43 @@
 
 1.  实现前端页面的基本布局。要求:
 
-    - [x] 布局类似于[学校门户](http://my.csu.edu.cn/login/index.jsp)
+    - 布局类似于[学校门户](http://my.csu.edu.cn/login/index.jsp)
 
-    - [x] 顶部需有 `LOGO` 栏目;
+    - 顶部需有 `LOGO` 栏目;
 
-    - [x] 左侧提供轮播图;
+    - 左侧提供轮播图;
 
-    - [x] 提供账号密码登录方式;
+    - 提供账号密码登录方式;
 
-    - [x] 提供手机号码 + 短信验证码登录方式;
+    - 提供手机号码 + 短信验证码登录方式;
 
-    - [x] 登录成功后跳到显示“登录成功”四字的页面(简单设计)
+    - 登录成功后跳到显示“登录成功”四字的页面(简单设计)
 
-    - [x] \*提供忘记密码和修改密码功能;
+    - 提供忘记密码和修改密码功能;
 
-    - [x] \*提供用户的增删改查。
+    - 提供用户的增删改查。
 
 2.  完成前后端数据交互(用 `JSON` 格式)
 
 3.  数据操作要求:
 
-    - [x] 数据统一存储在后端数据库中;
+    - 数据统一存储在后端数据库中;
 
-    - [x] 账号密码登录方式需进行验证,验证通过方能登录;
+    - 账号密码登录方式需进行验证,验证通过方能登录;
 
-    - [x] 手机验证码需调用第三方短信接口发送验证码并进行验证;
+    - 手机验证码需调用第三方短信接口发送验证码并进行验证;
 
-    - [x] 后端实现技术不限、数据库系统不限。
-
-> \* 为可选项目(加分项目)
+    - 后端实现技术不限、数据库系统不限。
 
 ## 其他说明
 
-- [x] 实验独立完成;
+- 实验独立完成;
 
-- [x] 需在 2020 年 12 月 30 日前实验室时间现场提交检查,也可在其他时间检查(需提前预约);
+- 需在 2020 年 12 月 30 日前实验室时间现场提交检查,也可在其他时间检查(需提前预约);
 
-- [x] 每个同学需在 2020 年 12 月 31 日提交完整的实验报告(发送至[邮箱](vlab@163.com));
+- 每个同学需在 2020 年 12 月 31 日提交完整的实验报告(发送至[邮箱](vlab@163.com));
 
-- [x] 不能使用任何框架。
+- 不能使用任何框架。
 
 ## 实验内容
 
@@ -78,14 +76,37 @@
 
 * `PHP`: `PHP 7.4.11 (cli) (built: Oct  6 2020 10:34:39) ( NTS )`
 
-#### 第三方短信验证码API 
+#### 第三方短信验证码`API` 
 
 [短信验证码接口](https://www.tianqiapi.com/index/doc?version=sms)
 
-请求方式: `GET`
+**请求方式:** `GET`
 
-URL: `https://yiketianqi.com/api`
+**URL:** `https://yiketianqi.com/api`
 
+**请求示例:** `https://yiketianqi.com/api/sms?appid=&appsecret=&code=&moblie=`
+
+**请求参数说明:**
+
+| 参数名    | 必须 | 类型   | 说明            |
+|:----------|:-----|:------:|:----------------|
+| appid     | Yes  | string | 用户appid       |
+| appsecret | Yes  | string | 用户appsecret   |
+| moblie    | Yes  | string | 手机号          |
+| code      | Yes  | string | `4~6`位的验证码 |
+
+**响应**`JSON`
+
+```json
+{"errcode": 0, "errmsg": "SUCCESS"}
+```
+
+**响应参数说明:**
+
+| 参数名  | 类型    | 说明                             |
+|:--------|:-------:|:---------------------------------|
+| errcode | integer | 错误码（0表示正常，100表示失败） |
+| errmsg  | string  | 错误提示                         |
 
 ### 项目架构
 
@@ -110,9 +131,11 @@ Web-Expr
 │   ├── login.js        # 实现帐号登录
 │   ├── lookup.js       # *帐号查询
 │   ├── send_code.js    # *帐号增加
-│   └── slides.js       # 实现轮播图
+│   ├── slides.js       # 实现轮播图
+│   └── switch.js       # 登录界面实现切换form
 ├── styles
 │   ├── base.css        # base.css
+│   ├── style_login.css # 实现用户界面布局
 │   └── style.css       # 实现登录界面布局
 ├── sync.sh             # 将项目同步到/var/www/html
 ├── validate_phone.php  # 验证手机并发送token
@@ -128,14 +151,21 @@ Web-Expr
 
 * `index.html`：用于帐号密码的登录
 
+    ![index.html](./screenshot/index.png)
+
 * `index_phone.html`：用于手机号的登录
 
+    ![index_phone.html](./screenshot/index_phone.png)
+
 #### 登录的架构
+
+登录的核心在于`token`，前后端的交互只是验证用户的身份，在帐号密码登录中，后端在验证身份有效后，动态的分配用户一个`token`，前端使用分配的`token`进行真正的登录。而在手机号登录中，`token`就是短信验证码。
+
+因为后端只验证不登录，所以可以通过`Ajax`返回不同的错误信息，比如用户名不存在和密码错误。手机登录则能提示已经发送短信。
 
 * 帐号密码登录（成功）
 
     ![](./images/user_succ.png)
-
 
 * 帐号密码登录（失败）
 
@@ -146,17 +176,24 @@ Web-Expr
     ![](./images/phone_succ.png)
 
 * 手机号登录（失败）
-    
+
     ![](./images/phone_fail.png)
 
 #### 帐号管理架构
 
 ![](./images/login.png)
 
+其中`account_delete.php change_account.php password_change.php` 不通过登录验证，而是通过使用内嵌`<form>`在的`token`（`<input type="hidden" name="token" value="...">`）和`username`（`<input type="hidden" name="username" value="...">`）在提交表格的时候自动提交来让后端进行身份验证。
+
+![](./images/lookup.png)
+
+登录界面会动态的在帐号信息查询展示用户自身的信息。
+
+![](./images/screenshot/lookup.png)
+
+#### 申请新帐号的架构
+
 ![](./images/add_user.png)
 
-其中`account_delete.php, change_account.php password_change.php` 不通过登录验证，而是通过使用内嵌`<form>`在的`token`（`<input type="hidden" name="token" value="...">`）进行身份验证。
-
-### 部分核心代码
 
 ## 实验收获

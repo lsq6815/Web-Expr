@@ -9,10 +9,11 @@ digraph G {
     delete[label="account_delete.php"];
     change[label="change_account.php"];
     change_pass[label="password_change.php"];
-    add_user[label="add_user"];
+    lookup[label="lookup"];
 
-    delete->login[label="Support delete action"];
-    change->login[label="Support change action"];
-    change_pass->login[label="Support password change"];
-    add_user->login[label="Support additon action"];
+    delete->login[label="删除帐号的操作"];
+    change->login[label="更改手机号的操作"];
+    change_pass->login[label="更新密码的操作"];
+    lookup->login[label="查询帐号的操作"];
+    "switch.js"->login[label="切换不同的form的操作"];
 }
