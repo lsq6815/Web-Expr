@@ -14,9 +14,6 @@ div.container {
 div.login_wrap {
     width: 100%;
     height: 100%;
-    /* top: 0; */
-    /* right: 0; */
-    /* bottom: 0; */
     background-color: rgba(0,0,0,0.3);
 }
 
@@ -59,15 +56,6 @@ div.methods_tab span {
 
 div.methods_tab span.active {
     border-bottom: 1px solid #2B6CDB;
-}
-
-div.methods_tab span a {
-    color: #34363E;
-    text-decoration: none;
-}
-
-div.methods_tab span.active a {
-    color: #2B6CDB;
 }
 
 div.container div.form {

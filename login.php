@@ -7,20 +7,8 @@ $db_username = 'php';
 $db_password = 'php';
 $db_server   = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 if ($db_server->connect_error) die ("Connection Failed: " . $db_server->connect_error());
-/* GET Method */
-/* parameters */
-/* token */ 
-/* username */
-/* echo "GET: "; */
-/* var_dump($_GET); */
-/* echo "<br/>SESSION: "; */
-/* var_dump($_SESSION); */
-/* echo "<br/>"; */
 
 if (isset($_GET['username'])) {
-    /* echo "username set<br/>"; */
-    /* echo "except " . $_SESSION[$_GET['username']] . "<br/>"; */
-    /* echo "You give " . $_GET['token'] . "<br/>"; */
     if ($_GET['token'] == $_SESSION[$_GET['username']]) {
         $stmt = $db_server->prepare("SELECT id, username, phone FROM users WHERE username = ? LIMIT 1");
 
